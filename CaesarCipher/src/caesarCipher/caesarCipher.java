@@ -1,21 +1,34 @@
+/**
+ * @Author Jason Hao
+ */
+
 package caesarCipher;
 
 import java.util.Scanner;
 
 public class caesarCipher {
 	
-	public static String encrypt(String text, int num) {
+	/**
+	 * Encrypts the text
+	 * @param text What needs to be encrypted
+	 * @param shift How many positions it needs to be shifted
+	 * @return Encrypted Text
+	 */
+	public static String encrypt(String text, int shift) {
+		
 		StringBuffer encryptedText = new StringBuffer();
-		text.toLowerCase();
+		
 		for(int i = 0; i < text.length(); i++) {
+			
+			/* Removes the whitespaces */
 			if(text.charAt(i) == 32) {
 				continue;
 			}
 			if(Character.isUpperCase(text.charAt(i))) {
-				char ch = (char)(((int)text.charAt(i) + num - 65) % 26 + 65);
+				char ch = (char)(((int)text.charAt(i) + shift - 65) % 26 + 65);
 				encryptedText.append(ch);
 			} else {
-				char ch = (char)(((int)text.charAt(i) + num - 97) % 26 + 97);
+				char ch = (char)(((int)text.charAt(i) + shift - 97) % 26 + 97);
 				encryptedText.append(ch);
 			}
 		}
