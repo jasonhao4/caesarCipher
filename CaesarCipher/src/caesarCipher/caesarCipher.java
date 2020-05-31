@@ -18,16 +18,19 @@ public class caesarCipher {
 		
 		StringBuffer encryptedText = new StringBuffer();
 		
-		for(int i = 0; i < text.length(); i++) {
-			
+		for(int i = 0; i < text.length(); i++) {	
 			/* Removes the whitespaces */
 			if(text.charAt(i) == 32) {
 				continue;
 			}
+			
+			/* Utilizes ascii table to convert upper case letters */
 			if(Character.isUpperCase(text.charAt(i))) {
+				/* Shifts character by 65 for upper case letters */
 				char ch = (char)(((int)text.charAt(i) + shift - 65) % 26 + 65);
 				encryptedText.append(ch);
 			} else {
+				/* Shifts character by 97 for the lower case letters */
 				char ch = (char)(((int)text.charAt(i) + shift - 97) % 26 + 97);
 				encryptedText.append(ch);
 			}
